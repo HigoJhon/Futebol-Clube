@@ -7,7 +7,7 @@ export default class TeamsService {
   };
 
   public getById = async (id: number) => {
-    const team = await Teams.findByPk(id);
+    const team = await Teams.findOne({ where: { id } });
     return { type: 200, message: team };
   };
 }
