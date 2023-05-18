@@ -1,7 +1,8 @@
 import { Model, DataTypes } from 'sequelize';
 import db from '.';
+import Team from './Teams';
 
-export default class Metches extends Model {
+export default class Matches extends Model {
   declare id: number;
   declare homeTeam: number;
   declare homeTeamGals: number;
@@ -10,41 +11,41 @@ export default class Metches extends Model {
   declare inProgress: boolean;
 }
 
-Metches.init({
+Matches.init({
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false,
   },
-  homeTeam: {
+  homeTeamId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'home_team',
   },
-  homeTeamGals: {
+  homeTeamGoals: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'home_team_gals',
   },
-  awayTeam: {
+  awayTeamId: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'away_team',
   },
-  awayTeamGals: {
+  awayTeamGoals: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    field: 'away_team_gals',
   },
   inProgress: {
     type: DataTypes.BOOLEAN,
     allowNull: false,
-    field: 'in_progress',
   },
 }, {
   sequelize: db,
   timestamps: false,
   underscored: true,
-  modelName: 'metches',
+  modelName: 'matches',
 });
+
+Team.hasMany(Matches, { foreignKey: 'homeTeamId', as: 'homeTeam' });
+Team.hasMany(Matches, { foreignKey: 'awayTeamId', as: 'awayTeam' });
+Matches.belongsTo(Team, { foreignKey: 'homeTeamId', as: 'homeTeam' });
+Matches.belongsTo(Team, { foreignKey: 'awayTeamId', as: 'awayTeam' });
