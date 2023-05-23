@@ -4,10 +4,10 @@ import Team from './Teams';
 
 export default class Matches extends Model {
   declare id: number;
-  declare homeTeam: number;
-  declare homeTeamGals: number;
-  declare awayTeam: number;
-  declare awayTeamGals: number;
+  declare homeTeamId: number;
+  declare homeTeamGoals: number;
+  declare awayTeamId: number;
+  declare awayTeamGoals: number;
   declare inProgress: boolean;
 }
 

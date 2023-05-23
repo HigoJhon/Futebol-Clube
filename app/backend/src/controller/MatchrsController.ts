@@ -30,7 +30,6 @@ export default class MatchesController {
     const { id } = req.params;
     try {
       const { type, message } = await this._matchesService.patchMatchesId(Number(id));
-      console.log('ok');
       return res.status(type).json(message);
     } catch (error) {
       return res.status(500).json({ message: error });
