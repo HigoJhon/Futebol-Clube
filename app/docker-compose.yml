@@ -48,7 +48,7 @@ services:
     restart: 'always'
     healthcheck:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"] # Deve aguardar o banco ficar operacional
-      timeout: 10s
-      retries: 5
+      timeout: 30s
+      retries: 10
     cap_add:
       - SYS_NICE # Deve omitir alertas menores

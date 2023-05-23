@@ -6,7 +6,7 @@ import validMatchrs from '../middlewares/validMatchrs';
 const matchesRouter = Router();
 const matchesController = new MatchesController();
 
-matchesRouter.get('/', validMatchrs.validMatch, matchesController.getAll.bind(matchesController));
+matchesRouter.get('/', matchesController.getAll.bind(matchesController));
 matchesRouter.post(
   '/',
   validMatchrs.validMatch,

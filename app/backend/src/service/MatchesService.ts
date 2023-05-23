@@ -1,4 +1,3 @@
-// import Team from '../database/models/Teams';
 import Team from '../database/models/Teams';
 import Matchers from '../database/models/Matches';
 

@@ -6,7 +6,6 @@ export default class MatchesController {
   async getAll(req: Request, res: Response): Promise<Response> {
     const { inProgress } = req.query;
     try {
-      if (!inProgress) return res.status(401).json({ message: 'Progress not found' });
       const { type, message } = (inProgress)
         ? await this._matchesService.getInProgress(inProgress as string)
         : await this._matchesService.getAll();
