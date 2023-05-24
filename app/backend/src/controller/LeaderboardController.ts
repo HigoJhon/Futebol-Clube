@@ -21,12 +21,12 @@ export default class LeaderboardController {
     }
   }
 
-  // async getTable(req: Request, res: Response): Promise<Response> {
-  //   try {
-  //     const { type, message } = await this._leaderboardService.getHome();
-  //     return res.status(type).json(message);
-  //   } catch (error) {
-  //     return res.status(500).json({ message: error });
-  //   }
-  // }
+  async getTable(req: Request, res: Response): Promise<Response> {
+    try {
+      const { type, message } = await this._leaderboardService.getAll();
+      return res.status(type).json(message);
+    } catch (error) {
+      return res.status(500).json({ message: error });
+    }
+  }
 }
